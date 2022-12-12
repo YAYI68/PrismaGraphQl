@@ -36,6 +36,15 @@ const books = [
     resolvers,
   });
 
-  const { url } = await startStandaloneServer(server, {
+  const runServer = async ()=>{
+     const { url } = await startStandaloneServer(server, {
     listen: { port: 4000 },
   });
+  console.log(url)
+  }
+
+  runServer()
+
+
+
+// console.log('Hello server')
