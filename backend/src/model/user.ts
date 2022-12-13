@@ -14,8 +14,9 @@ const signUp = async(data)=>{
     return user
 }
 
+
 const allUsers = async()=>{
-    const users = await prisma.user.findMany()
+    const users = await prisma.user.findMany();
     return users
 }
 

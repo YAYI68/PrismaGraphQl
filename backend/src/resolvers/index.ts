@@ -1,11 +1,11 @@
 export const resolvers = {
     Query:{
         users:(_,__,{dataSources})=>{
-            return dataSources.userModels.allUser()
+            return dataSources.userModels.allUsers()
         }
     },
     Mutation:{
-      createUser:(_,{input},{dataSources})=>{
+        signUp:(_,{input},{dataSources})=>{
         return dataSources.userModels.signUp(input)
       }
     }

@@ -4,7 +4,7 @@ import jwt from  'jsonwebtoken';
 
 
 export const hashPassword = async(password)=>{
-    const hash = await bcrypt.hash(password)
+    const hash = await bcrypt.hash(password,7)
     return hash
 }
 
