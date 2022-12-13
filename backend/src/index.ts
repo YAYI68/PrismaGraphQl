@@ -1,9 +1,10 @@
 import { ApolloServer } from '@apollo/server';
 import gql from 'graphql-tag';
 import { startStandaloneServer } from '@apollo/server/standalone';
-import bookModels from './model/book';
-import resolvers from './resolvers';
-import typeDefs from './schema';
+import {resolvers} from './resolvers';
+import {typeDefs} from './schema';
+import { userModels } from './model/user';
+
 
 
   const server = new ApolloServer({
@@ -17,7 +18,7 @@ import typeDefs from './schema';
      context: async()=>{
       return {
         dataSources: {
-          bookModels,
+          userModels,
         },
       }
      },

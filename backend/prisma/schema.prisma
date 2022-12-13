@@ -6,12 +6,58 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
 
-model Book {
-  author  String   @unique
-   title  String
+
+enum USER_STATUS {
+  CLIENT
+  AGENT
+}
+
+model User {
+  id          String  @id @default(uuid())
+  name        String
+  email       String
+  phoneNumber String
+  password    String
+  imageUrl    String?
+  status USER_STATUS @default(CLIENT)
+  agent       Agent?
+}
+
+model Agent {
+  id      String @id @default(uuid())
+  userId  String @unique
+  user    User   @relation(fields: [userId], references: [id])
+  address String
+  rating  String
+  homes    Home[]
+}
+
+enum SERVICE_STATUS {
+  RENT
+  SALE
+}
+
+enum Duration {
+  DAY
+  WEEK
+  MONTH
+  YEAR
+}
+model Home {
+  id      String @id @default(uuid())
+  status  String
+  agent   Agent  @relation(fields: [agentId], references: [id])
+  price    Int
+  rentDuration Duration @default(DAY)
+  agentId String
+  description String
+  address String
+  location String
+  postedDate DateTime @default(now())
+  serviceStatus SERVICE_STATUS @default(SALE)
 }

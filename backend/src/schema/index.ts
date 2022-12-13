@@ -1,20 +1,19 @@
-const typeDefs = `#graphql 
-  type Book{
-    title: String
-    author: String
+export const typeDefs = `#graphql 
+  type User{
+    name: String
+    email: String
   }
 
-  input newBookInput{
-    title: String
-    author: String
+  input newUserInput{
+    name: String
+    email: String
   }
 
   type Mutation {
-    addBook(input:newBookInput):Book!
+    createUser(input:newUserInput):User!
   }
 
   type Query {
-     books :[Book]!
+     users :[User]!
   }
 `
-export default typeDefs

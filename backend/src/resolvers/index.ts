@@ -1,15 +1,12 @@
-
-  const resolvers = {
+export const resolvers = {
     Query:{
-        books:(_,__,{dataSources})=>{
-            return dataSources.bookModels.getBooks()
+        users:(_,__,{dataSources})=>{
+            return dataSources.userModels.allUser()
         }
     },
     Mutation:{
-      addBook:(_,{input},{dataSources})=>{
-        return dataSources.bookModels.createBook(input)
+      createUser:(_,{input},{dataSources})=>{
+        return dataSources.userModels.signUp(input)
       }
     }
   }
-
-  export default resolvers
